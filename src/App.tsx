@@ -29,15 +29,13 @@ export default function App() {
   });
 
   const handleAddTask = async () => {
-    if (nTask.trim() === "") {
-      alert("Hãy nhập tên công việc!");
-      return;
+    if (nTask.trim() !== "") {
+      const newTask = { name: nTask, status: false };
+      const addedTask = await configApi.apiAddTask(newTask);
+      setTasks([...tasks, addedTask]);
+      message.success("Công việc đã được thêm!");
+      setNewTask("");
     }
-    const newTask = { name: nTask, status: false };
-    const addedTask = await configApi.apiAddTask(newTask);
-    setTasks([...tasks, addedTask]);
-    message.success("Công việc đã được thêm!");
-    setNewTask("");
   };
 
   const handleDeleteTask = async (taskId: string) => {
