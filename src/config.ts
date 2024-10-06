@@ -8,7 +8,7 @@ const configApi = {
   async apiGetAllTasks() {
     try {
       const response = await axios.get(API_URL);
-      return response.data; // Trả về danh sách công việc
+      return response.data;
     } catch (error) {
       throw new Error("Không thể lấy danh sách công việc: " + error);
     }
